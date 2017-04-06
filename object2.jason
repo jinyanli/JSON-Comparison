@@ -1,0 +1,13 @@
+{
+            "email":"xyz@xyz.com",
+             "username":"xyz",
+             "uid": 1100,
+             "password":"xyz@123",
+             "arr":[1,3,4,5,8,2,[1,2,3]],
+             "cars": {
+                         "car1":"Ford",
+                         "car2":"BMW",
+                         "car3":"Fiat"
+                     }
+
+ }
