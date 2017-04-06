@@ -2,14 +2,14 @@ var fs=require("fs");
 var obj1 = JSON.parse(fs.readFileSync("object1.jason"));
 var obj2 = JSON.parse(fs.readFileSync("object2.jason"));
 
-if(compare(obj1,obj2)){
+if(compareObj(obj1,obj2)){
   console.log("true");
 }else{
   console.log("false");
 }
 
 
-function compare(arg1, arg2){
+function compareObj(arg1, arg2){
   var obj1=arg1;
   var obj2=arg2;
   var obj1KeyArray=[];
@@ -53,12 +53,12 @@ function compare(arg1, arg2){
 
         if(Array.isArray(obj1[obj1KeyArray[i]])){
           //compare array
-          if (arrayCompare(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
+          if (compareArray(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
             return false;
           }
         }else if(typeof obj1[obj1KeyArray[i]]==='object'){
           //compare obj
-          if (compare(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
+          if (compareObj(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
             return false;
           }
         }else{
@@ -71,8 +71,8 @@ function compare(arg1, arg2){
   return true;
 }
 
-//console.log(arrayCompare([1,2,[1,2,3,[1,2,3,4,[3,4]]]],[1,2,[1,2,3,[1,2,3,4,[3,4]]]]));
-function arrayCompare(arr1, arr2){
+//console.log(compareArray([1,2,[1,2,3,[1,2,3,4,[3,4]]]],[1,2,[1,2,3,[1,2,3,4,[3,4]]]]));
+function compareArray(arr1, arr2){
   arr1.sort();
   arr2.sort();
   if(arr1.length!=arr2.length){
@@ -88,7 +88,7 @@ function arrayCompare(arr1, arr2){
     //compare if element is array
     if(Array.isArray(arr1[i])){
       //console.log("recursion");
-      if (arrayCompare(arr1[i],arr2[i])===false){
+      if (compareArray(arr1[i],arr2[i])===false){
         //console.log("flag3");
         return false;
       }
