@@ -14,6 +14,7 @@ try{
 }catch(e){
   console.log("Error in object2.jason\n");
   console.log(e);
+  err=true;
 }
 
 if(!err){
