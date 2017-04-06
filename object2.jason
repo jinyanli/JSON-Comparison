@@ -5,9 +5,16 @@
              "password":"xyz@123",
              "arr":[1,3,4,5,8,2,[1,2,3]],
              "cars": {
+                        "plane": {
+                          "plane1":"beoing",
+                          "plane2":"Airbus",
+                          "plane3":"lockheed martin" ,
+                          "plane-array":["f-15","f-16","f-18","f-22",["su-27","mig-29"]]
+                          },
                          "car1":"Ford",
                          "car2":"BMW",
                          "car3":"Fiat"
+
                      }
 
  }
