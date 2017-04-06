@@ -25,15 +25,13 @@ if(!err){
   }
 }
 
-
-
+//function for comparing two objects
 function compareObj(arg1, arg2){
   var obj1=arg1;
   var obj2=arg2;
   var obj1KeyArray=[];
   var obj2KeyArray=[];
 
-  //console.log("Obj1:");
   for(var key in obj1) {
         obj1KeyArray.push(key);
   }
@@ -42,7 +40,7 @@ function compareObj(arg1, arg2){
          obj2KeyArray.push(key);
   }
 
-  //compare keys length
+  //compare number of keys
   if(obj1KeyArray.length!=obj2KeyArray.length){
     return false;
   }
@@ -50,8 +48,7 @@ function compareObj(arg1, arg2){
   obj1KeyArray.sort();
   obj2KeyArray.sort();
 
-
-  //compare keys names
+  //compare keys' names of both obj
   for(var i=0; i<obj1KeyArray.length;i++){
       if(obj1KeyArray[i]!=obj2KeyArray[i]){
         return false;
@@ -66,17 +63,17 @@ function compareObj(arg1, arg2){
         }
 
         if(Array.isArray(obj1[obj1KeyArray[i]])){
-          //compare array
+          //compare array element
           if (compareArray(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
             return false;
           }
         }else if(typeof obj1[obj1KeyArray[i]]==='object'){
-          //compare obj
+          //compare obj element
           if (compareObj(obj1[obj1KeyArray[i]],obj2[obj2KeyArray[i]])===false){
             return false;
           }
         }else{
-          //compare primitive values
+          //compare primitive type values
           if(obj1[obj1KeyArray[i]]!=obj2[obj2KeyArray[i]]){
             return false;
           }
@@ -85,19 +82,22 @@ function compareObj(arg1, arg2){
   return true;
 }
 
-
+//function for comparing two arrays
 function compareArray(arr1, arr2){
   arr1.sort();
   arr2.sort();
+
   if(arr1.length!=arr2.length){
     return false;
   }
+
   for(var i=0; i<arr1.length;i++){
-    //compare type
+    //compare element's type
     if(typeof arr1[i]!=typeof arr2[i]){
       return false;
     }
-    //compare if element is array
+
+    //compare array element
     if(Array.isArray(arr1[i])){
       if (compareArray(arr1[i],arr2[i])===false){
         return false;
