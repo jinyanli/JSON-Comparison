@@ -1,32 +1,20 @@
 var fs=require("fs");
+var obj1 = JSON.parse(fs.readFileSync("object1.json"));
+var obj2 = JSON.parse(fs.readFileSync("object2.json"));
 
-var err=false;
-try{
-  var obj1 = JSON.parse(fs.readFileSync("object1.jason"));
-}catch(e){
-  console.log("Error in object1.jason\n");
-  console.log(e);
-  err=true;
-}
-
-try{
-  var obj2 = JSON.parse(fs.readFileSync("object2.jason"));
-}catch(e){
-  console.log("Error in object2.jason\n");
-  console.log(e);
-  err=true;
-}
-
-if(!err){
-  if(compareObj(obj1,obj2)){
-    console.log("true");
-  }else{
-    console.log("false");
-  }
-}
+console.log(compareObj(obj1,obj2));
 
 //function for comparing two objects
 function compareObj(arg1, arg2){
+  if(typeof arg1!="object"){
+    console.log("arg1 is not obj in compareObj()");
+    return false
+  }
+  if(typeof arg2!="object"){
+    console.log("arg2 is not obj compareObj()");
+    return false
+  }
+
   var obj1=arg1;
   var obj2=arg2;
   var obj1KeyArray=[];
@@ -84,6 +72,15 @@ function compareObj(arg1, arg2){
 
 //function for comparing two arrays
 function compareArray(arr1, arr2){
+  if(!Array.isArray(arr1)){
+    console.log("arr1 is not obj in compareArray()");
+    return false
+  }
+  if(!Array.isArray(arr2)){
+    console.log("arr2 is not obj compareArray()");
+    return false
+  }
+
   arr1.sort();
   arr2.sort();
 
@@ -103,7 +100,7 @@ function compareArray(arr1, arr2){
         return false;
       }
     }else if(typeof arr1[i]==='object'){
-      if (compare(arr1[i],arr2[i])===false){
+      if (compareObj(arr1[i],arr2[i])===false){
         return false;
       }
     }else{

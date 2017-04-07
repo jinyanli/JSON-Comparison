@@ -1,5 +1,7 @@
 {
             "email":"xyz@xyz.com",
+            "spouse": null,
+             "number":0,
              "username":"xyz",
              "uid": 1100,
              "password":"xyz@123",
@@ -9,7 +11,7 @@
                           "plane1":"beoing",
                           "plane2":"Airbus",
                           "plane3":"lockheed martin" ,
-                          "plane-array":["f-15","f-16","f-18","f-22",["su-27","mig-29"]]
+                          "plane-array":["f-15","f-16","f-18","f-22",["su-27","mig-29",{"email":"xyz@xyz.com","uid": 1100}]]
                           },
                          "car1":"Ford",
                          "car2":"BMW",
