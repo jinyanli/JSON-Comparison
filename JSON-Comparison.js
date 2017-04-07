@@ -1,10 +1,8 @@
-var fs=require("fs");
-var obj1 = JSON.parse(fs.readFileSync("object1.json"));
-var obj2 = JSON.parse(fs.readFileSync("object2.json"));
+module.exports ={
+    compareObj:compareObj,
+    compareArray:compareArray,
+};
 
-console.log(compareObj(obj1,obj2));
-
-//function for comparing two objects
 function compareObj(arg1, arg2){
   if(typeof arg1!="object"){
     console.log("arg1 is not obj in compareObj()");
@@ -70,8 +68,8 @@ function compareObj(arg1, arg2){
   return true;
 }
 
-//function for comparing two arrays
-function compareArray(arr1, arr2){
+
+function compareArray (arr1, arr2){
   if(!Array.isArray(arr1)){
     console.log("arr1 is not obj in compareArray()");
     return false
@@ -93,7 +91,6 @@ function compareArray(arr1, arr2){
     if(typeof arr1[i]!=typeof arr2[i]){
       return false;
     }
-
     //compare array element
     if(Array.isArray(arr1[i])){
       if (compareArray(arr1[i],arr2[i])===false){
